@@ -1,33 +1,32 @@
 #include <iostream>
 
-class cat {
+class Cat {
 public:
-	cat(int age) : mAge(age) {};
-	void speak() {
-		static int count = 0;
-		std::cout << count << " meow" << std::endl;
-		count++;
+	Cat(): mAge(1) {
+		std::cout << "constructor" << std::endl;
 	}
-	//static int count;
+	Cat(int age): mAge(age) {
+		std::cout << "constructor + age" << std::endl;
+	}
+	~Cat() {
+		std::cout << "destructor" << std::endl;
+	}
+	void speak() {
+		std::cout << "meow~" << std::endl;
+	}
 private:
 	int mAge;
 };
 
 class Zoo {
 public:
-	Zoo(int age) :zoocat(cat(5)) {};
+	Zoo(int kittyage) : mkitty(kittyage) { };
 private:
-	cat zoocat;
+	Cat mkitty;
 };
 
-//int cat::count = 0;
-
 int main() {
-
-	cat kitty(5);
-	cat nabi(10);
-	kitty.speak();
-	nabi.speak();
+	Zoo zoo(5);
 
 	return 0;
 }
