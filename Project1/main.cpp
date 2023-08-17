@@ -1,32 +1,39 @@
 #include <iostream>
+#include <string>
 
 class Cat {
 public:
-	Cat(): mAge(1) {
-		std::cout << "constructor" << std::endl;
+	Cat() = default;
+	Cat(std::string name, int age) : mName{ std::move(name) }, mAge(age)
+	{
+		std::cout << mName << " constructor" << std::endl;
+	};
+	Cat(const Cat& other) : mName{ std::move(other.mName) }, mAge{ other.mAge }{
+		std::cout << mName << " copy constructor" << std::endl;
 	}
-	Cat(int age): mAge(age) {
-		std::cout << "constructor + age" << std::endl;
+	Cat(Cat&& other) :mName{ std::move(other.mName) }, mAge{ other.mAge }{
+		std::cout << mName << " move constructor" << std::endl;
 	}
-	~Cat() {
-		std::cout << "destructor" << std::endl;
+	~Cat()
+	{
+		std::cout << mName << "destructor" << std::endl;
 	}
-	void speak() {
-		std::cout << "meow~" << std::endl;
+	void speakName() {
+		std::cout << mName << std::endl;
 	}
+
 private:
 	int mAge;
-};
-
-class Zoo {
-public:
-	Zoo(int kittyage) : mkitty(kittyage) { };
-private:
-	Cat mkitty;
+	std::string mName;
 };
 
 int main() {
-	Zoo zoo(5);
+	Cat kitty{"kitty", 1};
+	Cat nabi = kitty;
+	Cat nabi2{ std::move(kitty) };
+	kitty.speakName();
+	nabi.speakName();
+	nabi2.speakName();
 
 	return 0;
 }
