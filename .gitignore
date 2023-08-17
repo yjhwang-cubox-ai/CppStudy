@@ -1,8 +1,2 @@
-.vs/
 .history/
-Project1/Debug
-Project1/Project1/Debug
-*.sln
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
+build/
