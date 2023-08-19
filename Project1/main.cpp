@@ -25,8 +25,32 @@ private:
 	Cat mkitty;
 };
 
+struct complexNum {
+	double real;
+	double imag;
+
+	complexNum(double r, double i): real{ r }, imag{ i } {};
+
+	void print() const
+	{
+		std::cout << real << " " << imag << "i" << std::endl;
+	}
+};
+
+complexNum operator+(complexNum lhs, complexNum rhs) {
+	complexNum c{ lhs.real + rhs.real, lhs.imag + rhs.imag };
+	return c;
+}
+
+
 int main() {
 	Zoo zoo(5);
+
+	complexNum c1{ 1,1 };
+	complexNum	c2{ 1,2 };
+
+	complexNum c{ c1+c2 };
+	c.print();
 
 	return 0;
 }
