@@ -1,39 +1,58 @@
 #include <iostream>
+#include <array>
 
 class Animal {
 public:
-	Animal() {
-		std::cout << "constructor!" << age << std::endl;
+	virtual void speak() {
+		std::cout << "animal~" << std::endl;
 	}
-	int age = 1000;
-protected:
-	int mAge =100;
-private:
-	int mmAge;
 };
 
-class Person : protected Animal {
+class Cat : public Animal {
 public:
-	void speak() {
-		std::cout << mAge << std::endl;
+	Cat() {
+		std::cout << "cat Constructor" << std::endl;
+	};
+	Cat(int age) : mAge(age) { std::cout << "cat Constructor   " << mAge << std::endl; };
+	void speak() override {
+		std::cout << "meow~" << std::endl;
 	}
-	void speak2() {
-		std::cout << age << std::endl;
+	~Cat() {
+		std::cout << "cat Destructor" << std::endl;
 	}
+private:
+	int mAge;
+};
 
-	/*void speak2() {
-		std::cout << mmAge << std::endl;
-	}*/
+class Dog : public Animal {
+public:
+	Dog() {
+		std::cout << "dog Constructor" << std::endl;
+	}
+	void speak() override {
+		std::cout << "bark!!!" << std::endl;
+	}
+	~Dog() {
+		std::cout << "dog Denstructor" << std::endl;
+	}
 };
 
 int main() {
-	Person person;
-	Animal dog;
-	//int a = person.age;
-	int b = dog.age;
+	std::array<Animal*, 5> animals;
+	for (auto& animal : animals) {
+		int i = 0;
+		std::cin >> i;
+		if (i == 1)
+		{
+			animal = new Cat;
+		}
+		else
+		{
+			animal = new Dog;
+		}
+	}
 
+	std::unique_ptr<Cat> a = std::make_unique<Cat>(5);
 
-	person.speak();
-	person.speak2();
-
+	return 0;
 }
