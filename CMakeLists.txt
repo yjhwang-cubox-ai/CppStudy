@@ -4,3 +4,4 @@ project(CppStudy)
 add_compile_options(-DUNICODE -D_UNICODE)
 
 add_subdirectory(Project1)
+add_subdirectory(Project2)
