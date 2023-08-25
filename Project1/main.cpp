@@ -2,28 +2,34 @@
 
 class Animal {
 public:
-	virtual void speak() {
-		std::cout << "Animal meow~" << std::endl;
-	}
-	virtual ~Animal() = default;
-private:
-	double height;
+	virtual void speak() = 0;
+};
+
+class Dog : public Animal {
+public:
+	Dog() { std::cout << "Dog" << std::endl; }
+	virtual void speak() { std::cout << "bark!" << std::endl; }
+	virtual ~Dog() { std::cout << "Dog dest" << std::endl; }
 };
 
 class Cat : public Animal {
 public:
-	void speak() override {
-		std::cout << "Cat meow~" << std::endl;
-	}
-private:
-	double width;
+	Cat() { std::cout << "Dog" << std::endl; }
+	virtual void speak() { std::cout << "meow~" << std::endl; }
+	virtual ~Cat() { std::cout << "Cat dest" << std::endl; }
 };
 
 int main() {
-	std::cout << "Animal size: " << sizeof(Animal) << std::endl;
-	std::cout << "Cat size: " << sizeof(Cat) << std::endl;
+	Animal* ptr = NULL;
+	int i = 0;
+	std::cin >> i;
 
-	Animal* ptr = new Cat();
+	if (i == 1) {
+		ptr = new Dog();
+	}
+	else {
+		ptr = new Cat();
+	}
 	ptr->speak();
 	delete ptr;
 
