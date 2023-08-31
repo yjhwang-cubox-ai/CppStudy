@@ -10,8 +10,19 @@ CMyString::~CMyString()
 	Release();
 }
 
+CMyString::CMyString(const CMyString& rhs):m_pszData(NULL), m_nLength(0) {
+	this->SetString(rhs.Getstring());
+}
+
+CMyString&  CMyString::operator= (CMyString& rhs) {
+	if (this != &rhs)
+		this->SetString(rhs.Getstring());
+
+	return *this;
+}
+
 int CMyString::SetString(const char* pszParam) {
-	Release();
+	//Release();
 
 	if (pszParam == NULL) return 0;
 

@@ -7,10 +7,17 @@ void TestFunc(const CMyString& param) {
 
 
 int main() {
-	CMyString strData;
+	CMyString strData, strTest;
 	strData.SetString("Hello");
-	strData.SetString("World");
-	std::cout << strData.Getstring() << std::endl;
+	strTest.SetString("World");
+
+	// 복사 생성
+	CMyString strNewdata(strData);
+	std::cout << strNewdata.Getstring() << std::endl;
+
+	// 단순 대입 연산자 호출
+	strNewdata = strTest;
+	std::cout << strNewdata.Getstring() << std::endl;
 
 	return 0;
 }
