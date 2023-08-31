@@ -5,6 +5,10 @@ CMyString::CMyString():m_pszData(nullptr), m_nLength(0) {
 
 }
 
+CMyString::CMyString(const char* m_data) : m_pszData(NULL), m_nLength(0) {
+	SetString(m_data);
+}
+
 CMyString::~CMyString()
 {
 	Release();
@@ -19,6 +23,10 @@ CMyString&  CMyString::operator= (CMyString& rhs) {
 		this->SetString(rhs.Getstring());
 
 	return *this;
+}
+
+CMyString::operator char* (void) const{
+	return m_pszData;
 }
 
 int CMyString::SetString(const char* pszParam) {

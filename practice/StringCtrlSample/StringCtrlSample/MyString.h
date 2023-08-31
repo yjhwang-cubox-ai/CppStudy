@@ -3,10 +3,14 @@
 class CMyString {
 public:
 	CMyString();
+	CMyString(const char* m_data);
+
 	~CMyString();
 
-	CMyString(const CMyString& rhs);
+	explicit CMyString(const CMyString& rhs);
 	CMyString& operator= (CMyString& rhs);
+
+	operator char* (void) const;
 
 	int SetString(const char* pszParam);
 	const char* Getstring() const;
