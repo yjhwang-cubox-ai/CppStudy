@@ -1,5 +1,6 @@
 #include "MyString.h"
 #include <iostream>
+using namespace std;
 
 CMyString::CMyString():m_pszData(nullptr), m_nLength(0) {
 
@@ -16,6 +17,15 @@ CMyString::~CMyString()
 
 CMyString::CMyString(const CMyString& rhs):m_pszData(NULL), m_nLength(0) {
 	this->SetString(rhs.Getstring());
+}
+
+CMyString::CMyString(CMyString&& rhs) noexcept {
+	cout << "이동생성자" << endl;
+	m_pszData = rhs.m_pszData;
+	m_nLength = rhs.m_nLength;
+
+	rhs.m_pszData = NULL;
+	rhs.m_nLength = 0;
 }
 
 CMyString&  CMyString::operator= (CMyString& rhs) {

@@ -1,2 +1,7 @@
 ﻿  CopyConstructor1.cpp
-  CopyConstructor.vcxproj -> C:\Users\youngjun\work\research\CppStudy\chapter04\CopyConstructor\Debug\CopyConstructor.exe
+C:\Users\youngjun\work\research\CppStudy\chapter04\CopyConstructor\CopyConstructor\CopyConstructor1.cpp(40,26): error C2664: 'CTestData::CTestData(int,char *)': 인수 2을(를) 'const char [2]'에서 'char *'(으)로 변환할 수 없습니다.
+C:\Users\youngjun\work\research\CppStudy\chapter04\CopyConstructor\CopyConstructor\CopyConstructor1.cpp(40,22): message : 문자열 리터럴로부터의 변환은 const 한정자가 손실됩니다(/Zc:strictStrings 참조).
+C:\Users\youngjun\work\research\CppStudy\chapter04\CopyConstructor\CopyConstructor\CopyConstructor1.cpp(7,2): message : 'CTestData::CTestData' 선언을 참조하십시오.
+C:\Users\youngjun\work\research\CppStudy\chapter04\CopyConstructor\CopyConstructor\CopyConstructor1.cpp(46,21): error C2664: 'CTestData::CTestData(int,char *)': 인수 2을(를) 'const char [2]'에서 'char *'(으)로 변환할 수 없습니다.
+C:\Users\youngjun\work\research\CppStudy\chapter04\CopyConstructor\CopyConstructor\CopyConstructor1.cpp(46,17): message : 문자열 리터럴로부터의 변환은 const 한정자가 손실됩니다(/Zc:strictStrings 참조).
+C:\Users\youngjun\work\research\CppStudy\chapter04\CopyConstructor\CopyConstructor\CopyConstructor1.cpp(7,2): message : 'CTestData::CTestData' 선언을 참조하십시오.

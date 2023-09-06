@@ -1,38 +1,28 @@
 #include <iostream>
+#include <vector>
 
-class Animal {
+class Cat {
 public:
-	virtual void speak() = 0;
-	virtual ~Animal() = default;
-};
+	Cat(int age, std::string name) :mAge(age), mName(name) {};
 
-class Dog : public Animal {
-public:
-	Dog() { std::cout << "Dog" << std::endl; }
-	void speak() override { std::cout << "bark!" << std::endl; }
-	virtual ~Dog() { std::cout << "Dog dest" << std::endl; }
-};
+	void speak() {
+		std::cout << "meow~" << mAge << mName << std::endl;
+	}
 
-class Cat : public Animal {
-public:
-	Cat() { std::cout << "Dog" << std::endl; }
-	void speak() override { std::cout << "meow~" << std::endl; }
-	virtual ~Cat() { std::cout << "Cat dest" << std::endl; }
+private:
+	int mAge;
+	std::string mName;
 };
 
 int main() {
-	Animal* ptr = NULL;
-	int i = 0;
-	std::cin >> i;
+	std::vector<Cat> cats;
+	cats.emplace_back(1, "kitty");
+	cats.emplace_back(2, "kitty");
+	cats.emplace_back(3, "kitty");
 
-	if (i == 1) {
-		ptr = new Dog();
+	for (auto& cat : cats) {
+		cat.speak();
 	}
-	else {
-		ptr = new Cat();
-	}
-	ptr->speak();
-	delete ptr;
 
 	return 0;
 }
