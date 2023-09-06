@@ -20,6 +20,9 @@ int main() {
 	cats.emplace_back(2, "kitty");
 	cats.emplace_back(3, "kitty");
 
+	Cat Nabi(3, "nabi");
+	cats.emplace_back(std::move(Nabi));
+
 	for (auto& cat : cats) {
 		cat.speak();
 	}
