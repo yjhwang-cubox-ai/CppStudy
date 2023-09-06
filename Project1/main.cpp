@@ -3,29 +3,38 @@
 
 class Cat {
 public:
-	Cat(int age, std::string name) :mAge(age), mName(name) {};
-
-	void speak() {
-		std::cout << "meow~" << mAge << mName << std::endl;
+	explicit Cat(std::string name) : mName{ std::move(name) } {
+		std::cout << mName << " Cat constructor" << std::endl;
+	}
+	~Cat()
+	{
+		std::cout << mName << "~Cat()" << std::endl;
+	}
+	Cat(const Cat& other) : mName(other.mName)
+	{
+		std::cout << mName << " copy constructor" << std::endl;
+	}
+	Cat(Cat&& other) noexcept: mName(std::move(other.mName)) {
+		std::cout << mName << " move Constructor" << std::endl;
 	}
 
 private:
-	int mAge;
 	std::string mName;
 };
 
+
+
+
+
+
+
 int main() {
 	std::vector<Cat> cats;
-	cats.emplace_back(1, "kitty");
-	cats.emplace_back(2, "kitty");
-	cats.emplace_back(3, "kitty");
+	cats.reserve(2);
 
-	Cat Nabi(3, "nabi");
-	cats.emplace_back(std::move(Nabi));
+	cats.emplace_back("kitty");
+	cats.emplace_back("nabi");
 
-	for (auto& cat : cats) {
-		cat.speak();
-	}
 
 	return 0;
 }
